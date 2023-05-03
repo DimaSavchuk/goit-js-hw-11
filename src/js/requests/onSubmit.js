@@ -53,7 +53,7 @@ export function onSubmit(event) {
 
     refs.galleryEl.innerHTML = '';
 
-    request = event.currentTarget.elements.searchQuery.value;
+    const request = event.currentTarget.elements.searchQuery.value;
     if (request.trim() === '') {
         Notify.info('Please enter your request');
         return;
