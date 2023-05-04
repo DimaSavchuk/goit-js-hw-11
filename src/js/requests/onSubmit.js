@@ -32,7 +32,7 @@ function onLoad(entries, observer) {
             try {
                 const response = await apiRequest(page);
 
-                if (response.totalHits < response.page * response.per_page) {
+                if (response.totalHits < page * 40) {
                     observer.unobserve(refs.guardEl);
                     Notify.info(`We're sorry, but you've reached the end of search results`);
                     return;
@@ -74,6 +74,7 @@ async function renderCards() {
 
         return;
     } else {
+
         observer.observe(refs.guardEl);
         Notify.success(`"Hooray! We found ${response.totalHits} images."`);
         refs.galleryEl.insertAdjacentHTML('beforeend', createItemListMarkup(response.hits));
